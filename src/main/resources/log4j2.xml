@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- status=debug 可以查看log4j的装配过程 -->
+<configuration status="off" monitorInterval="1800">
+	<properties>
+		<!-- log path -->
+		<property name="LOG_HOME">../logs</property>
+		<!-- log back -->
+		<property name="INFO">info</property>
+		<property name="ERROR">error</property>
+	</properties>
+	<appenders>
+		<!-- console appender -->
+		<Console name="Console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %-7level [%thread][%file:%line] - %msg%n"/>
+		</Console>
+
+		<!-- error log -->
+		<RollingRandomAccessFile name="ERROR" fileName="${LOG_HOME}/${ERROR}"
+								 filePattern="${LOG_HOME}/${ERROR}.%d{yyyy-MM-dd-HH}.log">
+			<PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+			</Policies>
+		</RollingRandomAccessFile>
+		<!-- info log -->
+		<RollingRandomAccessFile name="INFO" fileName="${LOG_HOME}/${INFO}"
+								 filePattern="${LOG_HOME}/${INFO}.%d{yyyy-MM-dd-HH}.log">
+			<PatternLayout pattern="%date{yyyy-MM-dd HH:mm:ss.SSS} %level [%thread][%file:%line] - %msg%n"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+			</Policies>
+		</RollingRandomAccessFile>
+	</appenders>
+	<loggers>
+		<!-- Root Logger -->
+		<root level="info">
+			<appender-ref ref="Console"/>
+		</root>
+	</loggers>
+</configuration>

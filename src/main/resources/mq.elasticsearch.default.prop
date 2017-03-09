@@ -1,0 +1,12 @@
+es.host=127.0.0.1
+es.index.prefix=rocketmq_
+es.index.suffix=flume
+es.cluster.name=elasticsearch
+
+rocketmq.elasticsearch.namesrv.addr=127.0.0.1:9876
+rocketmq.elasticsearch.consumer.group=rocketmq-elasticsearch-group1
+rocketmq.elasticsearch.topic=FromFlume
+rocketmq.elasticsearch.topic.tag=realTime
+
+rocketmq.elasticsearch.ordered=false
+rocketmq.prefetch.size=1
